@@ -1,22 +1,35 @@
 #!/usr/bin/python3
 '''canUnlockAll'''
+
+
 def canUnlockAll(boxes):
     '''
     Args:
         boxes: list
     '''
-    # Step 1
-    boxes_set = set(range(len(boxes)))
-
-    # Step 2
-    keys = set(boxes[0])
-
-    # Step 3
+    # Check if the input is valid
+    if not boxes:
+        return False
+    
+    # Set to keep track of which boxes have been opened
+    opened = set()
+    # Queue for the keys
+    keys = []
+    
+    # Add the keys in the first box to the queue and mark the first box as opened
+    keys.extend(boxes[0])
+    opened.add(0)
+    
+    # BFS loop
     while keys:
-        key = keys.pop()
-        if key in boxes_set:
-            boxes_set.remove(key)
-            keys.update(boxes[key])
-
-    # Step 4
-    return not boxes_set
+        # Get the next key
+        key = keys.pop(0)
+        # Check if the key is a valid box index and if the box has not been opened
+        if 0 <= key < len(boxes) and key not in opened:
+            # Add the keys in the box to the queue
+            keys.extend(boxes[key])
+            # Mark the box as opened
+            opened.add(key)
+    
+    # Return True if all boxes have been opened, else return False
+    return len(opened) == len(boxes)
