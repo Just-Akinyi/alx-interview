@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-'''canUnlockAll'''
+'''defines canUnlockAll function'''
 
 
 def canUnlockAll(boxes):
     '''
     Args:
         boxes: list
+    returns:
+        True or False
     '''
     # Check if the input is valid
     if not boxes:
