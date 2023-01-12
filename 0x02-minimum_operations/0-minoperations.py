@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 '''defines minOperations function'''
+
+
 def minOperations(n: int) -> int:
     '''calculates the fewest number of operations needed'''
     if n <= 0:
@@ -12,4 +14,4 @@ def minOperations(n: int) -> int:
             n /= i
         else:
             i += 1
-    return operations + 1
+    return operations + 2
